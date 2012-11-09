@@ -1,0 +1,14 @@
+
+@media all and (min-width: 640px) {
+
+	.adx-adaptive-images-test {
+		width: 1px;
+	}
+}
+
+@media all and (min-width: 926px) {
+
+	.adx-adaptive-images-test {
+		width: 2px;
+	}
+}
