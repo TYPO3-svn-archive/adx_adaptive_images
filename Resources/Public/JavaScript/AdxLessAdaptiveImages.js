@@ -12,17 +12,34 @@
 
 (function($){
 
-	// Equals height of grid boxes.
-	$.fn.adxAdaptiveImages = function(options){
-		console.log(options);
-		console.log($(this).html());
-		var image = $($(this).html());
-		console.log(image);
-//		$(this).before($(this).html());
-	}
+	var adxAdaptiveImagesTest = false;
 
-	$(document).ready(function(){
-		$('body').prepend($('<div class="adx-adaptive-images-test" style="position: absolute; top: -100em" />'));
-	});
+	$.fn.adxAdaptiveImages = function(options){
+
+		var className = this.attr('class'),
+			cssClassPrefix = className.substr(0, className.indexOf('-') + 1),
+			imageClassName = cssClassPrefix + 'image',
+			insertClassName = className + '-insert',
+			insertSelector = '.' + insertClassName,
+			testClassName = cssClassPrefix + 'test',
+			testSelector = '.' + testClassName,
+			self = this;
+
+		if (!adxAdaptiveImagesTest){
+			$('body').prepend($('<div class="' + testClassName + '" style="position: absolute; top: -100em" />'));
+			adxAdaptiveImagesTest = true;
+		}
+
+		this.before('<img src="" class="' + insertClassName + ' ' + imageClassName + '" />');
+
+		$(window)
+			.on('resize', function(){
+				var index = $(testSelector).width();
+				if (options[index]){
+					$(insertSelector).attr('src', options[index])
+				}
+			})
+			.trigger('resize');
+	}
 
 })(jQuery);

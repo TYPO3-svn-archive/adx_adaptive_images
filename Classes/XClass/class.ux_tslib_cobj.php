@@ -10,7 +10,7 @@ class ux_tslib_content_Image extends tslib_content_Image {
 
 		// if adaptive not set, nothing else to do
 		if (!$this->isAdaptiveImageEnabled($configuration)) {
-			return $imageTagNoScript;
+			return parent::render($configuration);;
 		}
 
 		// prevent recursion
@@ -27,11 +27,9 @@ class ux_tslib_content_Image extends tslib_content_Image {
 
 		$images = array();
 		$sources = array();
-		foreach ($settings['breakpoints.'] as $key => $value) {
+		foreach ($settings['breakpoints.'] as $key => $imageConfiguration) {
 
 			$key = substr($key, 0, -1);
-			$imageConfiguration = t3lib_div::array_merge_recursive_overrule($configuration, $value);
-
 			$images[$key]['tag'] = parent::render($imageConfiguration);
 			$images[$key]['source'] = $this->getAdaptiveImageSource($images[$key]['tag']);
 			if ($key != 'noScript') {
@@ -39,16 +37,17 @@ class ux_tslib_content_Image extends tslib_content_Image {
 			}
 		}
 
-		$selectorClassName = $settings['selectorClassName'] . '-' . md5($images['noScript']['tag']);
-		$adaptiveImage = '<noscript class="' . $selectorClassName . '">' . PHP_EOL;
+		$hash = md5($images['noScript']['tag']);
+		$selectorClassName = $settings['cssClassPrefix'] . 'image-' . $hash;
+		$adaptiveImage = PHP_EOL . '<noscript class="' . $selectorClassName . '">' . PHP_EOL;
 		$adaptiveImage .= $images['noScript']['tag'] . PHP_EOL;
 		$adaptiveImage .= '</noscript>' . PHP_EOL;
 
 		$pageRenderer = t3lib_div::makeInstance('t3lib_PageRenderer');
 
 		if (count($sources)) {
-			$inlineJS = sprintf('$(\'%s\').adxAdaptiveImages({ %s });', $selectorClassName, implode(', ', $sources));
-			$pageRenderer->addJsInlineCode(md5($images['noScript']['tag']), $inlineJS, $GLOBALS['TSFE']->config['config']['compressJs']);
+			$inlineJS = sprintf('(function($){ $(document).ready(function(){ $(\'.%s\').adxAdaptiveImages({ %s }); }); })(jQuery);', $selectorClassName, implode(', ', $sources));
+			$pageRenderer->addJsInlineCode($hash, $inlineJS, $GLOBALS['TSFE']->config['config']['compressJs']);
 		}
 
 		return $adaptiveImage;

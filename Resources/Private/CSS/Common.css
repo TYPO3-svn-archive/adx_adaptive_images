@@ -1,14 +1,22 @@
 
-@media all and (min-width: 640px) {
+.adxadaptiveimages-image {
+	width: 100%;
+}
 
-	.adx-adaptive-images-test {
+.adxadaptiveimages-test {
+	width: 0px;
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+
+	.adxadaptiveimages-test {
 		width: 1px;
 	}
 }
 
-@media all and (min-width: 926px) {
+@media (max-width: 767px) {
 
-	.adx-adaptive-images-test {
+	.adxadaptiveimages-test {
 		width: 2px;
 	}
 }

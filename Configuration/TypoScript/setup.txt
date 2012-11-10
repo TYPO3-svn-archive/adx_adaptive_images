@@ -4,22 +4,26 @@
  */
 plugin.tx_adxadaptiveimages {
 
-	selectorClassName = {$plugin.tx_adxadaptiveimages.cssClassPrefix}adaptive-images
+	cssClassPrefix = {$plugin.tx_adxadaptiveimages.cssClassPrefix}
 
 	breakpoints {
 
+		noScript < tt_content.image.20.1
 		noScript {
 			file.maxW = {$plugin.tx_adxadaptiveimages.maxWidth.default}
 		}
 
+		0 < tt_content.image.20.1
 		0 {
 			file.maxW = {$plugin.tx_adxadaptiveimages.maxWidth.large}
 		}
 
+		1 < tt_content.image.20.1
 		1 {
 			file.maxW = {$plugin.tx_adxadaptiveimages.maxWidth.default}
 		}
 
+		2 < tt_content.image.20.1
 		2 {
 			file.maxW = {$plugin.tx_adxadaptiveimages.maxWidth.medium}
 		}
@@ -35,7 +39,7 @@ tt_content.image {
 
 // include JavaScript
 page.includeJS {
-	tx_adxless_adaptive_images = EXT:adx_less/Resources/Public/JavaScript/AdxLessAdaptiveImages.js
+	tx_adxless_adaptive_images = EXT:adx_adaptive_images/Resources/Public/JavaScript/AdxLessAdaptiveImages.js
 }
 
 // extend adx_less
