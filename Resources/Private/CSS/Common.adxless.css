@@ -1,0 +1,22 @@
+
+(~".@{adxadaptiveimagesClassPrefix}image") {
+	width: 100%;
+}
+
+(~".@{adxadaptiveimagesClassPrefix}test") {
+	width: 0px;
+}
+
+@media (min-width: @gridMediumBreakpointMin) and (max-width: @gridMediumBreakpointMax) {
+
+	(~".@{adxadaptiveimagesClassPrefix}test") {
+		width: 1px;
+	}
+}
+
+@media (max-width: @gridMediumBreakpointMin - 1) {
+
+	(~".@{adxadaptiveimagesClassPrefix}test") {
+		width: 2px;
+	}
+}

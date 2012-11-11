@@ -31,19 +31,34 @@ plugin.tx_adxadaptiveimages {
 
 }
 
+/**
+ * plugin.tx_adxless
+ */
+plugin.tx_adxless {
+
+	variables {
+		adxadaptiveimagesClassPrefix = {$plugin.tx_adxadaptiveimages.cssClassPrefix}
+	}
+}
+
 
 // make tt_content.image adaptive
 tt_content.image {
 	20.1.adaptive.field = tx_adxadaptiveimages_adaptive
 }
 
+// include CSS
+page.includeCSS {
+	tx_adxadaptiveimages_css = EXT:adx_adaptive_images/Resources/Private/CSS/Common.adxless.css
+}
+
 // include JavaScript
 page.includeJS {
-	tx_adxless_adaptive_images = EXT:adx_adaptive_images/Resources/Public/JavaScript/AdxLessAdaptiveImages.js
+	tx_adxadaptiveimages_js = EXT:adx_adaptive_images/Resources/Public/JavaScript/AdxLessAdaptiveImages.js
 }
 
 // extend adx_less
-pageTxAdxLessCSS {
-	10.compile.20 = FILE
-	10.compile.20.file = EXT:adx_adaptive_images/Resources/Private/CSS/Common.css
-}
+#pageTxAdxLessCSS {
+#	10.compile.20 = FILE
+#	10.compile.20.file = EXT:adx_adaptive_images/Resources/Private/CSS/Common.css
+#}

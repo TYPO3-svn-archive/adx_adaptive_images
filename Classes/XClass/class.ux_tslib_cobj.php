@@ -10,7 +10,7 @@ class ux_tslib_content_Image extends tslib_content_Image {
 
 		// if adaptive not set, nothing else to do
 		if (!$this->isAdaptiveImageEnabled($configuration)) {
-			return parent::render($configuration);;
+			return parent::render($configuration);
 		}
 
 		// prevent recursion
@@ -51,116 +51,6 @@ class ux_tslib_content_Image extends tslib_content_Image {
 		}
 
 		return $adaptiveImage;
-
-
-print_r($images);
-print_r($adaptiveImage);
-
-		$images['noScript']['maxWidth'] = $this->cObj->stdWrap($settings['maxWidth.']['noScript'], (array) $settings['maxWidth.']['noScript.']);
-		$images['large']['maxWidth'] = $this->cObj->stdWrap($settings['maxWidth.']['large'], (array) $settings['maxWidth.']['large.']);
-		$images['default']['maxWidth'] = $this->cObj->stdWrap($settings['maxWidth.']['default'], (array) $settings['maxWidth.']['default.']);
-		$images['medium']['maxWidth'] = $this->cObj->stdWrap($settings['maxWidth.']['medium'], (array) $settings['maxWidth.']['medium.']);
-
-		$configuration['file.']['maxW'] = $images['noScript']['maxWidth'];
-		$images['noScript']['tag'] = parent::render($configuration);
-		$images['noScript']['source'] = $this->getAdaptiveImageSource($images['noScript']['tag']);
-
-		$images['large']['source'] = '';
-		if ($images['large']['maxWidth'] && $images['large']['maxWidth'] > $images['default']['maxWidth']) {
-			$configuration['file.']['maxW'] = $images['large']['maxWidth'];
-			$images['large']['tag'] = parent::render($configuration);
-			$images['large']['source'] = $this->getAdaptiveImageSource($images['large']['tag']);
-		}
-
-		$images['default']['source'] = '';
-		if ($images['default']['maxWidth']) {
-			$configuration['file.']['maxW'] = $images['default']['maxWidth'];
-			$images['default']['tag'] = parent::render($configuration);
-			$images['default']['source'] = $this->getAdaptiveImageSource($images['default']['tag']);
-		}
-
-		$images['medium']['source'] = '';
-		if ($images['medium']['maxWidth'] && $images['medium']['maxWidth'] < $images['default']['maxWidth']) {
-			$configuration['file.']['maxW'] = $images['medium']['maxWidth'];
-			$images['medium']['tag'] = parent::render($configuration);
-			$images['medium']['source'] = $this->getAdaptiveImageSource($images['medium']['tag']);
-		}
-
-
-
-
-		// if image empty, nothing else to do
-		if (!$imageTagNoScript) {
-			return '';
-		}
-
-		// get default image width
-		preg_match('/width="(\S*)"/', $imageTagNoScript, $matches);
-		$maxWidthDefault = $matches[1];
-
-
-
-
-print_r($imageSourceDefault.PHP_EOL);
-print_r($imageSourceMedium.PHP_EOL);
-
-
-
-
-
-#print_r($this->cObj);
-print_r($settings);
-#print_r($file.'*');
-#print_r($conf);
-
-		return $adaptiveImage;
-
-
-		$adaptiveImagesScriptClass = $settings['adaptiveImages.']['scriptClass'];
-		$adaptiveImagesClasses = array(
-			'desktop' => $adaptiveImagesScriptClass . '-desktop',
-			'table' => $adaptiveImagesScriptClass . '-table',
-			'phone' => $adaptiveImagesScriptClass . '-phone',
-		);
-		$imageTagNoScript = $noScriptMax . 'ImageTag';
-
-		// get default image width
-		preg_match('/width="(\S*)"/', $imageTagNoScript, $matches);
-		$desktopImageWidth = $matches[1];
-
-		$tableImageTag = '';
-		if ($tableMaxWidth && $tableMaxWidth < $desktopImageWidth) {
-			$configuration['file.']['maxW'] = $tableMaxWidth;
-			$tableImageTag = parent::render($configuration);
-		}
-
-		$phoneImageTag = '';
-		if ($phoneMaxWidth && $phoneMaxWidth < $desktopImageWidth && $phoneMaxWidth < $tableMaxWidth) {
-			$configuration['file.']['maxW'] = $phoneMaxWidth;
-			$phoneImageTag = parent::render($configuration);
-		}
-
-		// fallback to desktop if no script image is empty
-		$imageTagNoScript = $$imageTagNoScript ? $$imageTagNoScript : $imageTagNoScript;
-
-		// set responsive image tag
-#		$responsiveImage = '<script class="' . $adaptiveImagesScriptClass . '">document.write(\'<\' + \'!--\')</script><noscript>' . "\n";
-		$responsiveImage .= '<script>' . "\n";
-		$responsiveImage .= "
-(function($){
-	$(document).ready(function(){
-		$('noscript.adxless-adaptive-images').adxAdaptiveImages({
-			scriptClass: '" . $adaptiveImagesScriptClass . "',
-			testClass: 'gallery-test',
-			initialSuffix: 'uploads/pics/Home.png',
-			suffixes: {
-				'1': 'typo3temp/pics/Home_f72457cb43.png',
-				'2': 'typo3temp/pics/Home_d56045f018.png'
-			}
-		});
-	});
-})(jQuery);
-</script>" . "\n";
 	}
 
 	/**
