@@ -18,25 +18,23 @@
 
 		var className = this.attr('class'),
 			cssClassPrefix = className.substr(0, className.indexOf('-') + 1),
-			imageClassName = cssClassPrefix + 'image',
-			insertClassName = className + '-insert',
-			insertSelector = '.' + insertClassName,
-			testClassName = cssClassPrefix + 'test',
-			testSelector = '.' + testClassName,
 			self = this;
 
 		if (!adxAdaptiveImagesTest){
-			$('body').prepend($('<div class="' + testClassName + '" style="position: absolute; top: -100em" />'));
+			$('body').prepend($('<div class="' + cssClassPrefix + 'test" style="position: absolute; top: -100em" />'));
 			adxAdaptiveImagesTest = true;
 		}
 
-		this.before('<img src="" class="' + insertClassName + ' ' + imageClassName + '" />');
+		this.before('<div class="' + cssClassPrefix + 'container ' + className + '-image" />');
+
+		var loadedIndex = false;
 
 		$(window)
 			.on('resize', function(){
-				var index = $(testSelector).width();
-				if (options[index]){
-					$(insertSelector).attr('src', options[index])
+				var index = $('.' + cssClassPrefix + 'test').width();
+				if (loadedIndex !== index && options[index]){
+					$('.' + className + '-image').html($(options[index]));
+					loadedIndex = index;
 				}
 			})
 			.trigger('resize');

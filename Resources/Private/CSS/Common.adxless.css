@@ -1,22 +1,29 @@
 
-(~".@{adxadaptiveimagesClassPrefix}image") {
+(~".@{adxadaptiveimagesClassPrefix}container img") {
 	width: 100%;
 }
 
 (~".@{adxadaptiveimagesClassPrefix}test") {
-	width: 0px;
+	width: 1px;
+}
+
+@media (min-width: @gridLargeBreakpointMin) {
+
+	(~".@{adxadaptiveimagesClassPrefix}test") {
+		width: 0;
+	}
 }
 
 @media (min-width: @gridMediumBreakpointMin) and (max-width: @gridMediumBreakpointMax) {
 
 	(~".@{adxadaptiveimagesClassPrefix}test") {
-		width: 1px;
+		width: 2px;
 	}
 }
 
 @media (max-width: @gridMediumBreakpointMin - 1) {
 
 	(~".@{adxadaptiveimagesClassPrefix}test") {
-		width: 2px;
+		width: 3px;
 	}
 }
