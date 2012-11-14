@@ -49,10 +49,10 @@ tt_content.image {
 
 // include CSS
 page.includeCSS {
-	tx_adxadaptiveimages_css = EXT:adx_adaptive_images/Resources/Private/CSS/Common.adxless.css
+	tx_adxadaptiveimages_css = EXT:adx_adaptive_images/Resources/Private/CSS/Styles.adxless.css
 }
 
 // include JavaScript
 page.includeJS {
-	tx_adxadaptiveimages_js = EXT:adx_adaptive_images/Resources/Public/JavaScript/AdxLessAdaptiveImages.js
+	tx_adxadaptiveimages_js = EXT:adx_adaptive_images/Resources/Public/JavaScript/AdaptiveImages.js
 }
