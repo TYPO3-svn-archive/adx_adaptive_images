@@ -27,13 +27,17 @@
 
 		this.before('<div class="' + cssClassPrefix + 'container ' + className + '-image" />');
 
-		var loadedIndex = false;
+		var loaded = [],
+			loadedIndex = false;
 
 		$(window)
 			.on('resize', function(){
 				var index = $('.' + cssClassPrefix + 'test').width();
 				if (loadedIndex !== index && options[index]){
-					$('.' + className + '-image').html($(options[index]));
+					if (loaded[index] == undefined){
+						loaded[index] = $(options[index]);
+					}
+					$('.' + className + '-image').html(loaded[index]);
 					loadedIndex = index;
 				}
 			})
