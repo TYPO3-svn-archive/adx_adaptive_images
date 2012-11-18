@@ -36,8 +36,10 @@ plugin.tx_adxadaptiveimages {
 // add less variable
 plugin.tx_adxless {
 
-	variables {
-		adxadaptiveimagesClassPrefix = {$plugin.tx_adxadaptiveimages.cssClassPrefix}
+	lessphp {
+		variables {
+			adxadaptiveimagesClassPrefix = {$plugin.tx_adxadaptiveimages.cssClassPrefix}
+		}
 	}
 }
 
@@ -49,7 +51,7 @@ tt_content.image {
 
 // include CSS
 page.includeCSS {
-	tx_adxadaptiveimages_css = EXT:adx_adaptive_images/Resources/Private/CSS/Styles.adxless.css
+	tx_adxadaptiveimages_css = EXT:adx_adaptive_images/Resources/Private/CSS/Styles.less
 }
 
 // include JavaScript
