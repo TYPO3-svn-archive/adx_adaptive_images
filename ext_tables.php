@@ -8,8 +8,8 @@ t3lib_extMgm::addStaticFile($_EXTKEY, 'Configuration/TypoScript/', 'ad: Adaptive
  * Add-ons for tt_content
  */
 $tempColumns = array(
-	'tx_adxadaptiveimages_adaptive' => array(		
-		'label' => 'LLL:EXT:adx_adaptive_images/Resources/Private/Language/locallang_db.xlf:tx_adxadaptiveimages_adaptive',
+	'tx_adxadaptiveimages_enable' => array(		
+		'label' => 'LLL:EXT:adx_adaptive_images/Resources/Private/Language/locallang_db.xlf:tx_adxadaptiveimages_enable',
 		'exclude' => 1,		
 		'config' => array(
 			'type' => 'check',
@@ -24,6 +24,6 @@ $tempColumns = array(
 
 t3lib_div::loadTCA('tt_content');
 t3lib_extMgm::addTCAcolumns('tt_content', $tempColumns, 1);
-t3lib_extMgm::addFieldsToPalette('tt_content', 'image_settings', 'tx_adxadaptiveimages_adaptive', 'after:imageborder');
+t3lib_extMgm::addFieldsToPalette('tt_content', 'image_settings', 'tx_adxadaptiveimages_enable', 'after:imageheight');
 
 ?>

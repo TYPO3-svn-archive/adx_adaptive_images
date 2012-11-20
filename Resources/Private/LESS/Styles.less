@@ -4,26 +4,19 @@
 }
 
 (~".@{adxadaptiveimagesClassPrefix}test") {
-	width: 1px;
+	width: 0;
 }
 
-@media (min-width: @gridLargeBreakpointMin) {
+@media (min-width: @adxadaptiveimagesBreakpointMediumMin) and (max-width: @adxadaptiveimagesBreakpointMediumMax) {
 
 	(~".@{adxadaptiveimagesClassPrefix}test") {
-		width: 0;
+		width: 1px;
 	}
 }
 
-@media (min-width: @gridMediumBreakpointMin) and (max-width: @gridMediumBreakpointMax) {
+@media (max-width: @adxadaptiveimagesBreakpointMediumMin - 1) {
 
 	(~".@{adxadaptiveimagesClassPrefix}test") {
 		width: 2px;
-	}
-}
-
-@media (max-width: @gridMediumBreakpointMin - 1) {
-
-	(~".@{adxadaptiveimagesClassPrefix}test") {
-		width: 3px;
 	}
 }

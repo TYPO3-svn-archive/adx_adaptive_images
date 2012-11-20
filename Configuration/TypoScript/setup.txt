@@ -8,25 +8,14 @@ plugin.tx_adxadaptiveimages {
 
 	breakpoints {
 
-		0 {
-
-			ratio = {$plugin.tx_adxadaptiveimages.breakpoints.0.ratio}
-
-			image < tt_content.image.20.1
-			image.file.maxW = {$plugin.tx_adxadaptiveimages.breakpoints.0.maxWidth}
-		}
+		0.ratio = {$plugin.tx_adxadaptiveimages.breakpoints.0.ratio}
+		0.image < tt_content.image.20.1
 
 		1 < .0
-		1 {
-			ratio = {$plugin.tx_adxadaptiveimages.breakpoints.1.ratio}
-			image.file.maxW = {$plugin.tx_adxadaptiveimages.breakpoints.1.maxWidth}
-		}
+		1.ratio = {$plugin.tx_adxadaptiveimages.breakpoints.1.ratio}
 
 		2 < .0
-		2 {
-			ratio = {$plugin.tx_adxadaptiveimages.breakpoints.2.ratio}
-			image.file.maxW = {$plugin.tx_adxadaptiveimages.breakpoints.2.maxWidth}
-		}
+		2.ratio = {$plugin.tx_adxadaptiveimages.breakpoints.2.ratio}
 
 		noScript < .0
 	}
@@ -39,6 +28,8 @@ plugin.tx_adxless {
 	lessphp {
 		variables {
 			adxadaptiveimagesClassPrefix = {$plugin.tx_adxadaptiveimages.cssClassPrefix}
+			adxadaptiveimagesBreakpointMediumMax = {$plugin.tx_adxadaptiveimages.breakpoints.mediumMax}px
+			adxadaptiveimagesBreakpointMediumMin = {$plugin.tx_adxadaptiveimages.breakpoints.mediumMin}px
 		}
 	}
 }
@@ -46,7 +37,7 @@ plugin.tx_adxless {
 // make tt_content.image adaptive
 tt_content.image {
 	20.1.adaptive < plugin.tx_adxadaptiveimages
-	20.1.adaptive.enable.field = tx_adxadaptiveimages_adaptive
+	20.1.adaptive.enable.field = tx_adxadaptiveimages_enable
 }
 
 // include CSS

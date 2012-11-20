@@ -65,11 +65,13 @@ class ux_tslib_content_Image extends tslib_content_Image {
 
 		// parse width
 		$imageWidth = $this->cObj->stdWrap((string) $imageWidth, (array) $configuration['image.']['file.']['width.']);
+
 		unset($configuration['image.']['file.']['width.']);
 
 		// if width is greater 0, than set the new width by ratio
 		if ($imageWidth) {
-			$imageWidth = round($imageWidth * $configuration['ratio']);
+			$ratio = $this->cObj->stdWrap($configuration['ratio'], (array) $configuration['ratio.']);
+			$imageWidth = round($imageWidth * $ratio);
 		}
 	}
 

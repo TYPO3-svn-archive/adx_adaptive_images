@@ -3,7 +3,7 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2012-06-13T20:22:32Z" product-name="adx_less">
 		<header/>
 		<body>
-			<trans-unit id="tx_adxadaptiveimages_adaptive" xml:space="preserve">
+			<trans-unit id="tx_adxadaptiveimages_enable" xml:space="preserve">
 				<source>Adaptive</source>
 			</trans-unit>
 		</body>
