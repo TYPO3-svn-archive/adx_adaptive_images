@@ -51,7 +51,7 @@ tt_content.image {
 
 // include CSS
 page.includeCSS {
-	tx_adxadaptiveimages_css = EXT:adx_adaptive_images/Resources/Private/CSS/Styles.less
+	tx_adxadaptiveimages_css = EXT:adx_adaptive_images/Resources/Private/LESS/Styles.less
 }
 
 // include JavaScript

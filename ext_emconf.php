@@ -12,7 +12,7 @@
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'ad: Adaptive Images',
-	'description' => 'Adaptive images for responsive sites.',
+	'description' => 'Adaptive images for responsive sites. Can be used on every image rendered with cObject IMAGE. Renders images in diffrent sizes and load them on window resize. Note: Using XCLASS for cObject IMAGE!',
 	'category' => 'plugin',
 	'shy' => 0,
 	'version' => '0.0.0',
